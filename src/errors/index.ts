@@ -16,3 +16,4 @@ export { default as InvalidDatarror } from "./InvalidData.error";
 export { default as InvalidParameterError } from "./InvalidParameter.error";
 export { default as ResourceNotFoundError } from "./ResourceNotFound.error";
 export { default as SystemError } from "./System.error";
+export { default as IncomprehensibleMessage } from "./IncomprehensibleMessage.error";
