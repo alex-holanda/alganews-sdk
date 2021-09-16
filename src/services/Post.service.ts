@@ -28,6 +28,16 @@ class PostService extends Service {
   static publishExistingPost(postId: number) {
     return this.Http.put<{}>(`/posts/${postId}/publishing`).then(this.getData);
   }
+
+  static deactivateExistingPost(postId: number) {
+    return this.Http.delete<{}>(`/posts/${postId}/publishing`).then(
+      this.getData
+    );
+  }
+
+  static removeExistingPost(postId: number) {
+    return this.Http.delete<{}>(`/posts/${postId}`).then(this.getData);
+  }
 }
 
 export default PostService;
