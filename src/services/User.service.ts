@@ -3,8 +3,8 @@ import { User } from "../@types";
 import Service from "../Service";
 
 class UserService extends Service {
-  static getAllEditors(sort: User.Sort) {
-    const queryString = generateQueryString(sort);
+  static getAllEditors(sort?: User.Sort) {
+    const queryString = sort ? generateQueryString(sort) : "";
     return this.Http.get<User.EditorSummary[]>(
       "/users/editors".concat(queryString)
     ).then(this.getData);

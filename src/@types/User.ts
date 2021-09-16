@@ -19,6 +19,6 @@ export namespace User {
   } & Sort;
 
   export type Sort = {
-    sort?: [keyof Summary, "asc", "desc"];
+    sort?: [keyof Summary, "asc" | "desc"];
   };
 }
