@@ -13,7 +13,7 @@ class Service {
   protected static getData = getData;
 }
 
-Http.defaults.baseURL = "http://localhost:8080";
+Http.defaults.baseURL = "http://192.168.15.126:8080";
 
 Http.interceptors.response.use(
   handleAxiosResponseSuccess,
