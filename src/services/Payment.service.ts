@@ -49,7 +49,7 @@ class PaymentService extends Service {
   static getExistingPaymentPosts(paymentId: number, sort?: Payment.Sort) {
     const queryString = sort ? generateQueryString(sort) : "";
 
-    return this.Http.get<Post.WithEarnings>(
+    return this.Http.get<Post.WithEarnings[]>(
       `/payments/${paymentId}/posts`.concat(queryString)
     ).then(this.getData);
   }
