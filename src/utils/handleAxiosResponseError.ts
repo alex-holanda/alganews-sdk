@@ -19,7 +19,6 @@ export default function handleAxiosResponseError(error: AxiosError<ErrorData>) {
     const { type } = response.data;
     const { data } = response;
 
-    if (type === ERRORS.SYSTEM_ERROR) throw new BusinessError(data);
     if (type === ERRORS.FORBIDDEN) throw new ForbiddenError(data);
     if (type === ERRORS.INCOMPREHENSIBLE_MESSAGE)
       throw new IncomprehensibleMessageError(data);
@@ -29,6 +28,7 @@ export default function handleAxiosResponseError(error: AxiosError<ErrorData>) {
     if (type === ERRORS.RESOURCE_NOT_FOUND)
       throw new ResourceNotFoundError(data);
     if (type === ERRORS.SYSTEM_ERROR) throw new SystemError(data);
+    if (type === ERRORS.BUSINESS_ERROR) throw new BusinessError(data);
   }
 
   throw new GenericError({
