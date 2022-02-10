@@ -1,4 +1,5 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
+
 import handleAxiosResponseError from "./utils/handleAxiosResponseError";
 import handleAxiosResponseSuccess from "./utils/handleAxiosResposeSuccess";
 
@@ -11,6 +12,15 @@ function getData<T>(response: AxiosResponse<T>) {
 class Service {
   protected static Http = Http;
   protected static getData = getData;
+
+  public static setRequestInterceptors(
+    onFulfilled: (
+      request: AxiosRequestConfig
+    ) => AxiosRequestConfig | Promise<AxiosRequestConfig>,
+    onRejected: (error: any) => any
+  ) {
+    Http.interceptors.request.use(onFulfilled, onRejected);
+  }
 }
 
 Http.defaults.baseURL = "http://192.168.15.126:8080";
