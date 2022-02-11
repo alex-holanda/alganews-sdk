@@ -21,6 +21,15 @@ class Service {
   ) {
     Http.interceptors.request.use(onFulfilled, onRejected);
   }
+
+  public static setResponseInterceptors(
+    onFulfilled: (
+      response: AxiosResponse
+    ) => AxiosResponse | Promise<AxiosResponse>,
+    onRejected?: (error: any) => any
+  ) {
+    Http.interceptors.response.use(onFulfilled, onRejected);
+  }
 }
 
 Http.defaults.baseURL = "http://192.168.15.126:8080";

@@ -4,7 +4,6 @@ import {
   BusinessError,
   ERRORS,
   ForbiddenError,
-  GenericError,
   InvalidParameterError,
   ResourceNotFoundError,
   SystemError,
@@ -31,15 +30,5 @@ export default function handleAxiosResponseError(error: AxiosError<ErrorData>) {
     if (type === ERRORS.BUSINESS_ERROR) throw new BusinessError(data);
   }
 
-  throw new GenericError({
-    detail: response?.data.detail || error.message || "Erro desconhecido",
-    status: response?.status || 500,
-    userMessage:
-      response?.data.userMessage ||
-      response?.data.detail ||
-      "Erro desconhecido",
-    timestamp: response?.data.timestamp || "",
-    title: response?.data.title || "Erro desconhecido",
-    type: "GenericError",
-  });
+  throw error;
 }
