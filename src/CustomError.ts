@@ -3,13 +3,12 @@ import { AlgaNews } from "./@types";
 export type ErrorData = AlgaNews.components["schemas"]["Problem"];
 
 export type ErrorType =
-  | "BusinessError"
   | "ForbiddenError"
-  | "GenericError"
-  | "InvalidDatarror"
-  | "InvalidParameterError"
+  | "InvalidDataError"
+  | "SystemError"
   | "ResourceNotFoundError"
-  | "SystemError";
+  | "BusinessError"
+  | "GenericError";
 
 class CustomError {
   static type: ErrorType;
