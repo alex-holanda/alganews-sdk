@@ -11,8 +11,14 @@ class PostService extends Service {
     );
   }
 
-  static getExistingPost(id: number) {
-    return this.Http.get<Post.Detailed>(`/posts/${id}`).then(this.getData);
+  static getExistingPost(id: number, token?: string) {
+    return this.Http.get<Post.Detailed>(`/posts/${id}`, {
+      headers: {
+        ...(token && {
+          Authorization: `Bearer ${token}`,
+        }),
+      },
+    }).then(this.getData);
   }
 
   static insertNewPost(post: Post.Input) {
