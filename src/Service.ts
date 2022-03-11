@@ -13,6 +13,10 @@ class Service {
   protected static Http = Http;
   protected static getData = getData;
 
+  public static setBaseUrl(baseURL: string) {
+    this.Http.defaults.baseURL = baseURL;
+  }
+
   public static setRequestInterceptors(
     onFulfilled: (
       request: AxiosRequestConfig
@@ -32,7 +36,7 @@ class Service {
   }
 }
 
-Http.defaults.baseURL = "http://192.168.15.126:8080";
+Http.defaults.baseURL = "http://localhost:8080";
 
 Http.interceptors.response.use(
   handleAxiosResponseSuccess,
